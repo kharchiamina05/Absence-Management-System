@@ -152,3 +152,17 @@ button:hover {
         width: 25%;
     }
 }
+
+.buttonjs{
+    padding: 5px;
+    text-align: center;
+}
+.green {
+    background-color: #00ff00;
+}
+.yellow {
+    background-color: #ffe100;
+}
+.red {
+    background-color: #ff4747;
+}
