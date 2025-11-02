@@ -166,3 +166,7 @@ button:hover {
 .red {
     background-color: #ff4747;
 }
+
+.rowHover {
+    background-color: lightblue !important;
+}

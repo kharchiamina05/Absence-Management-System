@@ -3,12 +3,16 @@
 <head>
     <title>TD1</title>
     <link rel="stylesheet" href="CSS.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <h1>Student Attendance</h1>
 
-    <table>
-        <table id="attendanceTable">
+    <button id="highlightBest">Highlight Excellent Students</button>
+    <button id="resetColors">Reset Colors</button>
+
+    <table id="attendanceTable">
         <tr>
             <th rowspan="2">Last Name</th>
             <th rowspan="2">First Name</th>
@@ -53,7 +57,7 @@
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
-            <td class="abs">0</td>
+            <td class="absences"">0</td>
             <td class="par">0</td>
             <td class="msg"><input type="text" readonly></td>
         </tr>
@@ -73,7 +77,7 @@
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
-            <td class="abs">0</td>
+            <td class="absences"">0</td>
             <td class="par">0</td>
             <td class="msg"><input type="text" readonly></td>
         </tr>
@@ -93,7 +97,7 @@
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
             <td><input type="checkbox"></td>
-            <td class="abs">0</td>
+            <td class="absences"">0</td>
             <td class="par">0</td>
             <td class="msg"><input type="text" readonly></td>
         </tr>
@@ -101,9 +105,17 @@
 
     <div class="buttonjs">
         <button onclick="calculate()">Calculate Attendance</button>
+        <button id="showReportBtn">Show Report</button>
     </div>
 
-    <script src="JavaScript.js"></script>
+    <div id="reportSection" style="text-align:center; margin-top:20px; display:none;">
+        <h2>Attendance Report</h2>
+        <p id="totalStudents"></p>
+        <p id="totalPresent"></p>
+        <p id="totalParticipation"></p>
+        <canvas id="attendanceChart" width="400" height="200"></canvas>
+    </div>
+
     <div class="navbar">
         <a href="#">Home</a>
         <a href="StudentAttendance.html">Attendance List</a>
@@ -111,5 +123,7 @@
         <a href="#">Reports</a>
         <a href="#">Logout</a>
     </div>
+
+    <script src="JavaScriptStudentAttendance.js"></script>
 </body>
 </html>
