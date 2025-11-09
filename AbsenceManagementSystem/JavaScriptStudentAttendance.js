@@ -32,7 +32,7 @@ function calculate() {
 
 document.getElementById("showReportBtn").addEventListener("click", function () {
     const rows = document.querySelectorAll("#attendanceTable tr");
-    let totalStudents = rows.length - 2; 
+    let totalStudents = rows.length - 2;
     let totalPresent = 0;
     let totalParticipation = 0;
 
@@ -133,4 +133,38 @@ $(document).ready(function() {
         $("#attendanceTable tbody tr").css("background-color", "");
     });
 
+$("#searchName").on("keyup", function() {
+    const value = $(this).val().toLowerCase();
+    $("#attendanceTable tbody tr").filter(function() {
+        const lastName = $(this).find("td").eq(0).text().toLowerCase();
+        const firstName = $(this).find("td").eq(1).text().toLowerCase();
+        $(this).toggle(lastName.includes(value) || firstName.includes(value));
+    });
+});
+
+$("#sortAbs").click(function() {
+    const rows = $("#attendanceTable tbody tr").get();
+    rows.sort(function(a, b) {
+        const absA = parseInt($(a).find(".absences").text()) || 0;
+        const absB = parseInt($(b).find(".absences").text()) || 0;
+        return absA - absB;
+    });
+    $.each(rows, function(index, row) {
+        $("#attendanceTable tbody").append(row);
+    });
+    $("#sortMode").text("Currently sorted by absences (ascending)");
+});
+
+$("#sortPar").click(function() {
+    const rows = $("#attendanceTable tbody tr").get();
+    rows.sort(function(a, b) {
+        const parA = parseInt($(a).find(".par").text()) || 0;
+        const parB = parseInt($(b).find(".par").text()) || 0;
+        return parB - parA;
+    });
+    $.each(rows, function(index, row) {
+        $("#attendanceTable tbody").append(row);
+    });
+    $("#sortMode").text("Currently sorted by participation (descending)");
+});
 });

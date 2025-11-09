@@ -65,7 +65,7 @@ form.addEventListener("submit", function(event) {
     localStorage.setItem("students", JSON.stringify(students));
 
     const msg = document.getElementById("successMsg");
-    msg.textContent = "✅ Student added successfully!";
+    msg.textContent = "Student added successfully!";
 
     form.reset();
 
